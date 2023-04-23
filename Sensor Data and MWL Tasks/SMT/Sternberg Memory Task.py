@@ -166,8 +166,6 @@ def sternberg_task():
         response_times_list.append(response_time) # Append the response_time variable to the response_times_list
         timestamp_list.append(datetime.datetime.now().strftime(timestamp_format)) # Append the current timestamp to the timestamp_list
         trial_list.append(trial_counter)
-        print(correctness_list)
-        print(response_times_list)
         # Save the results to a file
         save_results(correctness_list, response_times_list)
         
@@ -223,7 +221,6 @@ def sternberg_task():
         serial_read_thread.join()
         while terminate_flag == True:
             datamerge()
-            root.destroy()
         
         
     # Define the function to show the results
@@ -258,7 +255,6 @@ def sternberg_task():
         # Create a Pandas DataFrame to store the results
 
         results_df = pd.DataFrame({'Correctness': correctness_list, 'Response Time (s)': response_times_list, 'Timestamp': timestamp_list})
-        print(terminate_flag)
         results_df.to_excel('task_results.xlsx')
     
 
@@ -310,11 +306,10 @@ sternberg_task_thread.start()
 def datamerge(): 
     while terminate_flag == True:    
         print('data merged')
-        results_df = pd.read_excel(r'C:\Users\brain\OneDrive\Desktop\TSS task\SMT\task_results.xlsx')
-        df_sensor = pd.read_excel(r'C:\Users\brain\OneDrive\Desktop\TSS task\SMT\serial_data_SMT.xlsx')
+        results_df = pd.read_excel(r'C:\Users\brain\OneDrive\Desktop\Sensor Data and MWL Tasks\SMT\task_results.xlsx')
+        df_sensor = pd.read_excel(r'C:\Users\brain\OneDrive\Desktop\Sensor Data and MWL Tasks\SMT\serial_data_SMT.xlsx')
         df_merged = pd.merge(results_df, df_sensor, on='Timestamp', how='outer')
         # Save the results to an Excel file named 'results.xlsx'
         df_merged.to_excel('results.xlsx')
-        print(df_merged)
         
     
