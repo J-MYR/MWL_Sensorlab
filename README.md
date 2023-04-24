@@ -32,4 +32,4 @@ Furthermore, you will need to specifiy the directory in which you are running th
 Look at the path where you are currently running the program of the task, as this is also where the excel files with the data will be saved.
 
 ### A video guide going through the code and roughly outlining the key functions and variables that can be manipulated can be found here:
--Work in Progress-
+https://youtu.be/-4KsyeuHlMc
